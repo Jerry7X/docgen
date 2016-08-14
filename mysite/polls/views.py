@@ -16,7 +16,8 @@ def index(request):
 			# redirect to a new URL:
 			#return HttpResponseRedirect('/thanks/')
 			name = form.cleaned_data['your_name']
-			return HttpResponse("Your name is %s." % name)
+			passwd = form.cleaned_data['your_pw']
+			return HttpResponse("Your name is %s, Password is %s." % (name, passwd))
 
 	# if a GET (or any other method) we'll create a blank form
 	else:
