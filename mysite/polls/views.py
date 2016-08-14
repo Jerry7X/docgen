@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
+from polls.models import Account
 
 from .forms import NameForm
 
@@ -17,6 +18,8 @@ def index(request):
 			#return HttpResponseRedirect('/thanks/')
 			name = form.cleaned_data['your_name']
 			passwd = form.cleaned_data['your_pw']
+			newuser = Account(name=name,passwd=passwd)
+			newuser.save()
 			return HttpResponse("Your name is %s, Password is %s." % (name, passwd))
 
 	# if a GET (or any other method) we'll create a blank form
